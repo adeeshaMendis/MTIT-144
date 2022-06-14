@@ -1,0 +1,13 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id : retail-customer-route
+          uri: lb://retail-customer-service
+          predicates:
+            - Path=/retailCustomer/*
+            - Method=GET,POST,PUT,DELETE
